@@ -1,27 +1,43 @@
-# ElectronDemo
+# Angular-ELectron-Demo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
 
-## Development server
+# Installed Packages
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. npm install electron --save-dev
+2. npm install electron-packager -g
+3. npm install electron-packager --save-dev
 
-## Code scaffolding
+# Steps to convert app
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. In `src/index.html` change <base href="/"> to <base href="./">
 
-## Build
+2. Install electron `npm install electron --save-dev`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+3. Create main.js in root of the project (not in src) (this is where createWindow() code goes)
 
-## Running unit tests
+4. Ensure main.js points to `dist/index.html` (not just index.html)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. Add "main":"main.js", in `scripts` section of the `package.json`
 
-## Running end-to-end tests
+6. Add below code in `scripts` section of the `package.json`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+"electron": "electron .", // <-- run electron 
+"electron-build": "ng build --prod && electron ." // <-- build app, then run electron `
 
-## Further help
+7. run/debug the app with:
+   `npm run electron-build`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+8. to build the app:
+`npm install electron-packager -g​​`
+`npm install electron-packager --save-dev`
+
+# Build
+9. then run:
+
+for Windows
+`electron-packager . --platform=win32​`
+
+for Mac
+`electron-packager . — platform=darwin`
+
